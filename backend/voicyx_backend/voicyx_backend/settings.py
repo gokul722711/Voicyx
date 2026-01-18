@@ -11,8 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-7#w_$i$4wxvik#b+hi%ad=08c)&_y^ji1jw13-00eae$^93fzj"
 
 
-DEBUG = True
-ALLOWED_HOSTS = ["*"]
+DEBUG = False
+ALLOWED_HOSTS = ["voicyx-backend.onrender.com"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -102,4 +102,5 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True
+
 
