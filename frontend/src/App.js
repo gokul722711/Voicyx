@@ -27,21 +27,23 @@ function App() {
     ]);
 
     // Send user input to the backend and get the response
-    fetch("http://127.0.0.1:8000/api/process-input/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user_input: text }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.response) {
-          // Update messages with the model's response
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { type: "assistant", text: data.response },
-          ]);
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+// Send user input to the backend and get the response
+fetch(`${API_BASE_URL}/api/process-input/`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ user_input: text }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.response) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "assistant", text: data.response },
+      ]);
 
           // Function to handle text-to-speech
           const speakResponse = (text) => {
